@@ -19,15 +19,15 @@
 		9E60B5E82774C30000E53FA0 /* PageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5E52774C30000E53FA0 /* PageId.swift */; };
 		9E60B5EC2774C32D00E53FA0 /* SearchResultItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5EA2774C32D00E53FA0 /* SearchResultItemCell.swift */; };
 		9E60B5ED2774C32D00E53FA0 /* SearchResultItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E60B5EB2774C32D00E53FA0 /* SearchResultItemCell.xib */; };
+		9E60B6242774C88300E53FA0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6232774C88300E53FA0 /* DataStore.swift */; };
+		9E60B6272774C88E00E53FA0 /* WikipediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6252774C88D00E53FA0 /* WikipediaAPI.swift */; };
+		9E60B6282774C88E00E53FA0 /* WikipediaAPI+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */; };
 		9E6889F1276E0E7100B985D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F0276E0E7100B985D6 /* AppDelegate.swift */; };
 		9E6889F3276E0E7100B985D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */; };
 		9E6889F5276E0E7100B985D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F4276E0E7100B985D6 /* ViewController.swift */; };
 		9E6889F8276E0E7100B985D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6889F6276E0E7100B985D6 /* Main.storyboard */; };
 		9E6889FA276E0E7500B985D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6889F9276E0E7500B985D6 /* Assets.xcassets */; };
 		9E6889FD276E0E7500B985D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6889FB276E0E7500B985D6 /* LaunchScreen.storyboard */; };
-		9EFED161276E1C3300607CD1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED160276E1C3300607CD1 /* DataStore.swift */; };
-		9EFED163276E1C7A00607CD1 /* WikipediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED162276E1C7A00607CD1 /* WikipediaAPI.swift */; };
-		9EFED165276E1CCB00607CD1 /* WikipediaAPI+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED164276E1CCB00607CD1 /* WikipediaAPI+Moya.swift */; };
 		9EFED16B276F2A1000607CD1 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED16A276F2A1000607CD1 /* Repository.swift */; };
 		9EFED16E276F2EBB00607CD1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED16D276F2EBB00607CD1 /* SearchModel.swift */; };
 		9EFED171276F317800607CD1 /* SearchViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFED170276F317800607CD1 /* SearchViewModelType.swift */; };
@@ -48,6 +48,9 @@
 		9E60B5E52774C30000E53FA0 /* PageId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageId.swift; sourceTree = "<group>"; };
 		9E60B5EA2774C32D00E53FA0 /* SearchResultItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultItemCell.swift; sourceTree = "<group>"; };
 		9E60B5EB2774C32D00E53FA0 /* SearchResultItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultItemCell.xib; sourceTree = "<group>"; };
+		9E60B6232774C88300E53FA0 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = DataStore/DataStore.swift; sourceTree = "<group>"; };
+		9E60B6252774C88D00E53FA0 /* WikipediaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WikipediaAPI.swift; path = ../../Common/DataStore/WikipediaAPI.swift; sourceTree = "<group>"; };
+		9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WikipediaAPI+Moya.swift"; path = "../../Common/DataStore/WikipediaAPI+Moya.swift"; sourceTree = "<group>"; };
 		9E6889ED276E0E7100B985D6 /* ReactiveSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6889F0276E0E7100B985D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,9 +59,6 @@
 		9E6889F9276E0E7500B985D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E6889FC276E0E7500B985D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E6889FE276E0E7500B985D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EFED160276E1C3300607CD1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
-		9EFED162276E1C7A00607CD1 /* WikipediaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaAPI.swift; sourceTree = "<group>"; };
-		9EFED164276E1CCB00607CD1 /* WikipediaAPI+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikipediaAPI+Moya.swift"; sourceTree = "<group>"; };
 		9EFED16A276F2A1000607CD1 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9EFED16D276F2EBB00607CD1 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		9EFED170276F317800607CD1 /* SearchViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelType.swift; sourceTree = "<group>"; };
@@ -123,6 +123,16 @@
 			path = ../../Common/View;
 			sourceTree = "<group>";
 		};
+		9E60B6222774C85900E53FA0 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				9E60B6252774C88D00E53FA0 /* WikipediaAPI.swift */,
+				9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */,
+				9E60B6232774C88300E53FA0 /* DataStore.swift */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
 		9E6889E4276E0E7100B985D6 = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +158,7 @@
 				9E60B5E22774C30000E53FA0 /* Extension */,
 				9E60B5E42774C30000E53FA0 /* ValueObject */,
 				9E60B5C8277370A900E53FA0 /* Reactive */,
-				9EFED15F276E1C0200607CD1 /* DataStore */,
+				9E60B6222774C85900E53FA0 /* DataStore */,
 				9EFED169276F29F700607CD1 /* Repository */,
 				9EFED16C276F2B3300607CD1 /* Model */,
 				9EFED16F276F316500607CD1 /* ViewModel */,
@@ -171,16 +181,6 @@
 				9E60B5C027722AB600E53FA0 /* DetailViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9EFED15F276E1C0200607CD1 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-				9EFED160276E1C3300607CD1 /* DataStore.swift */,
-				9EFED162276E1C7A00607CD1 /* WikipediaAPI.swift */,
-				9EFED164276E1CCB00607CD1 /* WikipediaAPI+Moya.swift */,
-			);
-			path = DataStore;
 			sourceTree = "<group>";
 		};
 		9EFED169276F29F700607CD1 /* Repository */ = {
@@ -331,19 +331,19 @@
 				9EFED173276F32E800607CD1 /* SearchViewModel.swift in Sources */,
 				9EFED171276F317800607CD1 /* SearchViewModelType.swift in Sources */,
 				9E60B5BA2770C22700E53FA0 /* SearchResultItemModel.swift in Sources */,
+				9E60B6282774C88E00E53FA0 /* WikipediaAPI+Moya.swift in Sources */,
 				9E60B5C527736D5700E53FA0 /* DetailViewModelType.swift in Sources */,
 				9E6889F5276E0E7100B985D6 /* ViewController.swift in Sources */,
 				9E60B5E72774C30000E53FA0 /* UICollectionVIew+Extension.swift in Sources */,
+				9E60B6272774C88E00E53FA0 /* WikipediaAPI.swift in Sources */,
+				9E60B6242774C88300E53FA0 /* DataStore.swift in Sources */,
 				9E60B5C327736C2500E53FA0 /* DetailModel.swift in Sources */,
 				9E60B5E82774C30000E53FA0 /* PageId.swift in Sources */,
 				9E60B5EC2774C32D00E53FA0 /* SearchResultItemCell.swift in Sources */,
 				9E60B5E62774C30000E53FA0 /* SearchResponse.swift in Sources */,
-				9EFED161276E1C3300607CD1 /* DataStore.swift in Sources */,
 				9E60B5CA277370CD00E53FA0 /* Reactive+WKWebView.swift in Sources */,
 				9EFED16E276F2EBB00607CD1 /* SearchModel.swift in Sources */,
 				9EFED16B276F2A1000607CD1 /* Repository.swift in Sources */,
-				9EFED165276E1CCB00607CD1 /* WikipediaAPI+Moya.swift in Sources */,
-				9EFED163276E1C7A00607CD1 /* WikipediaAPI.swift in Sources */,
 				9E6889F1276E0E7100B985D6 /* AppDelegate.swift in Sources */,
 				9E6889F3276E0E7100B985D6 /* SceneDelegate.swift in Sources */,
 				9E60B5C127722AB600E53FA0 /* DetailViewController.swift in Sources */,

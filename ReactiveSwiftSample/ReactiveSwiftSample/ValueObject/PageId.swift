@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct PageId {
-    private let rawValue: Int
+struct PageId: RawRepresentable {
+    let rawValue: Int
 
     init(rawValue: Int) {
         self.rawValue = rawValue
@@ -22,3 +22,7 @@ extension PageId: CustomStringConvertible {
         "\(self.rawValue)"
     }
 }
+
+// MARK: - Decodable
+
+extension PageId: Decodable {}

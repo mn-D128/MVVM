@@ -15,7 +15,7 @@ final class SearchResultItemModel: NSObject {
 
     init(item: SearchResponse.Query.Item) {
         self.title = item.title
-        self.pageId = PageId(rawValue: item.pageid)
+        self.pageId = item.pageid
 
         super.init()
     }

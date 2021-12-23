@@ -25,7 +25,7 @@ extension SearchResponse.Query {
     struct Item {
         let ns: Int
         let title: String
-        let pageid: Int
+        let pageid: PageId
         let size: Int
         let wordcount: Int
         let snippet: String

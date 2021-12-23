@@ -23,14 +23,6 @@ final class SearchViewModel: NSObject {
         self.search = Action { [weak model] in model?.search($0) ?? .never }
 
         super.init()
-
-        self.setupBind()
-    }
-
-    // MARK: - Private
-
-    private func setupBind() {
-        
     }
 }
 

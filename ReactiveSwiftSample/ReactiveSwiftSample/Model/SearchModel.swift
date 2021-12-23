@@ -16,6 +16,7 @@ final class SearchModel: NSObject {
 
     func search(_ search: String) -> SignalProducer<Void, Error> {
         self.repository.search(search)
+            .observe(on: UIScheduler())
             .on(value: { [weak self] in
                 self?.items = $0.query.search.map { SearchResultItemModel(item: $0) }
             })

@@ -12,7 +12,7 @@ import ReactiveCocoa
 final class SearchModel: NSObject {
     private let repository = Repository()
 
-    @objc private(set) dynamic var items = [SearchResultItemModel]()
+    private(set) var items = [SearchResultItemModel]()
 
     func search(_ search: String) -> SignalProducer<Void, Error> {
         self.repository.search(search)

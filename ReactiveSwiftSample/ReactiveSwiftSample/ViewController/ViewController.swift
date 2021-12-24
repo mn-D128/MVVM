@@ -34,9 +34,9 @@ final class ViewController: UIViewController {
         // outputs
         self.collectionView.reactive.reloadData <~ self.viewModel.outputs.reloadData
         self.searchBar.reactive.becomeFirstResponder <~ self.viewModel.outputs.searchBarBecomeFirstResponder
-        self.viewModel.outputs.showProgress.observeValues { KRProgressHUD.show() }
-        self.viewModel.outputs.dismissProgress.observeValues { KRProgressHUD.dismiss() }
-        self.viewModel.outputs.showError.observeValues { KRProgressHUD.showError(withMessage: $0) }
+        self.reactive.showKRProgressHUD <~ self.viewModel.outputs.showProgress
+        self.reactive.dismissKRProgressHUD <~ self.viewModel.outputs.dismissProgress
+        self.reactive.showErrorKRProgressHUD <~ self.viewModel.outputs.showError
         self.reactive.showDetail <~ self.viewModel.outputs.showDetail
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate

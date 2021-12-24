@@ -22,6 +22,7 @@
 		9E60B6272774C88E00E53FA0 /* WikipediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6252774C88D00E53FA0 /* WikipediaAPI.swift */; };
 		9E60B6282774C88E00E53FA0 /* WikipediaAPI+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */; };
 		9E60B6382774CDBB00E53FA0 /* SearchResultItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6372774CDBB00E53FA0 /* SearchResultItemModel.swift */; };
+		9E60B63C2776138C00E53FA0 /* Reactive+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B63B2776138C00E53FA0 /* Reactive+NSObject.swift */; };
 		9E6889F1276E0E7100B985D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F0276E0E7100B985D6 /* AppDelegate.swift */; };
 		9E6889F3276E0E7100B985D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */; };
 		9E6889F5276E0E7100B985D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F4276E0E7100B985D6 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		9E60B6252774C88D00E53FA0 /* WikipediaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WikipediaAPI.swift; path = ../../Common/DataStore/WikipediaAPI.swift; sourceTree = "<group>"; };
 		9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WikipediaAPI+Moya.swift"; path = "../../Common/DataStore/WikipediaAPI+Moya.swift"; sourceTree = "<group>"; };
 		9E60B6372774CDBB00E53FA0 /* SearchResultItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultItemModel.swift; path = ../../../Common/Model/SearchResultItemModel.swift; sourceTree = "<group>"; };
+		9E60B63B2776138C00E53FA0 /* Reactive+NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+NSObject.swift"; sourceTree = "<group>"; };
 		9E6889ED276E0E7100B985D6 /* ReactiveSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6889F0276E0E7100B985D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				9E60B5C9277370CD00E53FA0 /* Reactive+WKWebView.swift */,
+				9E60B63B2776138C00E53FA0 /* Reactive+NSObject.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				9E60B6272774C88E00E53FA0 /* WikipediaAPI.swift in Sources */,
 				9E60B6242774C88300E53FA0 /* DataStore.swift in Sources */,
 				9E60B5C327736C2500E53FA0 /* DetailModel.swift in Sources */,
+				9E60B63C2776138C00E53FA0 /* Reactive+NSObject.swift in Sources */,
 				9E60B5E82774C30000E53FA0 /* PageId.swift in Sources */,
 				9E60B5EC2774C32D00E53FA0 /* SearchResultItemCell.swift in Sources */,
 				9E60B5E62774C30000E53FA0 /* SearchResponse.swift in Sources */,

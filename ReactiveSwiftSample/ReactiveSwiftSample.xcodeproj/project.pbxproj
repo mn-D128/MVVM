@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		17043E3B20B03D2A8BAD141B /* libPods-ReactiveSwiftSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8DBD1E86BDBBDD77E15AA0 /* libPods-ReactiveSwiftSample.a */; };
 		9E60B5C127722AB600E53FA0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5C027722AB600E53FA0 /* DetailViewController.swift */; };
-		9E60B5C327736C2500E53FA0 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5C227736C2500E53FA0 /* DetailModel.swift */; };
 		9E60B5C527736D5700E53FA0 /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5C427736D5700E53FA0 /* DetailViewModelType.swift */; };
 		9E60B5C727736E2900E53FA0 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5C627736E2900E53FA0 /* DetailViewModel.swift */; };
 		9E60B5CA277370CD00E53FA0 /* Reactive+WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B5C9277370CD00E53FA0 /* Reactive+WKWebView.swift */; };
@@ -23,6 +22,7 @@
 		9E60B6282774C88E00E53FA0 /* WikipediaAPI+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */; };
 		9E60B6382774CDBB00E53FA0 /* SearchResultItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6372774CDBB00E53FA0 /* SearchResultItemModel.swift */; };
 		9E60B63C2776138C00E53FA0 /* Reactive+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B63B2776138C00E53FA0 /* Reactive+NSObject.swift */; };
+		9E60B6462776261C00E53FA0 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6452776261C00E53FA0 /* DetailModel.swift */; };
 		9E6889F1276E0E7100B985D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F0276E0E7100B985D6 /* AppDelegate.swift */; };
 		9E6889F3276E0E7100B985D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */; };
 		9E6889F5276E0E7100B985D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6889F4276E0E7100B985D6 /* ViewController.swift */; };
@@ -39,7 +39,6 @@
 		4B8DBD1E86BDBBDD77E15AA0 /* libPods-ReactiveSwiftSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveSwiftSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEBC740344AFBAE75F92031 /* Pods-ReactiveSwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveSwiftSample.release.xcconfig"; path = "Target Support Files/Pods-ReactiveSwiftSample/Pods-ReactiveSwiftSample.release.xcconfig"; sourceTree = "<group>"; };
 		9E60B5C027722AB600E53FA0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		9E60B5C227736C2500E53FA0 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		9E60B5C427736D5700E53FA0 /* DetailViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
 		9E60B5C627736E2900E53FA0 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		9E60B5C9277370CD00E53FA0 /* Reactive+WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+WKWebView.swift"; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		9E60B6262774C88D00E53FA0 /* WikipediaAPI+Moya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WikipediaAPI+Moya.swift"; path = "../../Common/DataStore/WikipediaAPI+Moya.swift"; sourceTree = "<group>"; };
 		9E60B6372774CDBB00E53FA0 /* SearchResultItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultItemModel.swift; path = ../../../Common/Model/SearchResultItemModel.swift; sourceTree = "<group>"; };
 		9E60B63B2776138C00E53FA0 /* Reactive+NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+NSObject.swift"; sourceTree = "<group>"; };
+		9E60B6452776261C00E53FA0 /* DetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailModel.swift; path = ../../../Common/Model/DetailModel.swift; sourceTree = "<group>"; };
 		9E6889ED276E0E7100B985D6 /* ReactiveSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6889F0276E0E7100B985D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6889F2276E0E7100B985D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,9 +197,9 @@
 		9EFED16C276F2B3300607CD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E60B6452776261C00E53FA0 /* DetailModel.swift */,
 				9E60B6372774CDBB00E53FA0 /* SearchResultItemModel.swift */,
 				9EFED16D276F2EBB00607CD1 /* SearchModel.swift */,
-				9E60B5C227736C2500E53FA0 /* DetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 				9E60B5E72774C30000E53FA0 /* UICollectionVIew+Extension.swift in Sources */,
 				9E60B6272774C88E00E53FA0 /* WikipediaAPI.swift in Sources */,
 				9E60B6242774C88300E53FA0 /* DataStore.swift in Sources */,
-				9E60B5C327736C2500E53FA0 /* DetailModel.swift in Sources */,
+				9E60B6462776261C00E53FA0 /* DetailModel.swift in Sources */,
 				9E60B63C2776138C00E53FA0 /* Reactive+NSObject.swift in Sources */,
 				9E60B5E82774C30000E53FA0 /* PageId.swift in Sources */,
 				9E60B5EC2774C32D00E53FA0 /* SearchResultItemCell.swift in Sources */,

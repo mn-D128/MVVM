@@ -9,7 +9,7 @@ import Foundation
 
 final class DetailModel: NSObject {
     let pageId: PageId
-    let title: String
+    @objc let title: String
 
     // MARK: - NSObject
 

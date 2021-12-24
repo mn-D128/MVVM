@@ -37,11 +37,32 @@ class ViewController: UIViewController {
         self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD())
         self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD())
         self.viewModel.outputs.showError.drive(self.rx.showErrorKRProgressHUD())
-        
-//        self.reactive.showDetail <~ self.viewModel.outputs.showDetail
+        self.viewModel.outputs.showDetail.drive(self.rx.showDetail())
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
         self.collectionView.delegate = self.viewModel.collectionViewDelegate
     }
+
+    fileprivate func showDetail(model: DetailModel) {
+        guard let vc = self.storyboard?.instantiateViewController(
+            identifier: "DetailViewController",
+            creator: { coder in
+                DetailViewController(coder: coder, model: model)
+            }
+        ) else {
+            return
+        }
+
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
+// MARK: - Reactive
+
+private extension Reactive where Base == ViewController {
+    func showDetail() -> Binder<DetailModel> {
+        Binder(self.base) { target, value in
+            target.showDetail(model: value)
+        }
+    }
+}

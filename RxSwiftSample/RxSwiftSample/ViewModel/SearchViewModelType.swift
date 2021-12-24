@@ -18,7 +18,7 @@ protocol SearchViewModelOutputs: AnyObject {
     var showProgress: Driver<Void> { get }
     var dismissProgress: Driver<Void> { get }
     var showError: Driver<String> { get }
-//    var showDetail: Signal<DetailModel, Never> { get }
+    var showDetail: Driver<DetailModel> { get }
 }
 
 protocol SearchViewModelType: AnyObject {

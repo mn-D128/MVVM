@@ -72,6 +72,22 @@
             </objects>
             <point key="canvasLocation" x="-597" y="138"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="3LM-rx-8UE">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="V16-Q5-jva" customClass="DetailViewController" customModule="ReactiveSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Adf-Ty-Kyn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5Je-oB-MpV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mfz-jt-6b1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zO-Y3-3Vo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="138"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

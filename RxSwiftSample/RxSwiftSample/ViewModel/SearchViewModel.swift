@@ -14,20 +14,18 @@ import RxCocoa
 final class SearchViewModel: NSObject {
     private let model: SearchModel
     private let search: Action<String, Void>
-//
-//    // outputs
-//    private let showDetailPipe = Signal<DetailModel, Never>.pipe()
-//
-//    // MARK: - NSObject
-//
+
+    // outputs
+    private let showDetailRelay = PublishRelay<DetailModel>()
+
+    // MARK: - NSObject
+
     override init() {
         let model = SearchModel()
         self.model = model
         self.search = Action<String, Void> { [weak model] in model?.search($0).asObservable() ?? .empty() }
 
         super.init()
-        
-        
     }
 }
 
@@ -70,10 +68,10 @@ extension SearchViewModel: SearchViewModelOutputs {
     var showError: Driver<String> {
         self.search.errors.map { $0.localizedDescription }.asDriver(onErrorDriveWith: .empty())
     }
-//
-//    var showDetail: Signal<DetailModel, Never> {
-//        self.showDetailPipe.output
-//    }
+
+    var showDetail: Driver<DetailModel> {
+        self.showDetailRelay.asDriver(onErrorDriveWith: .empty())
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -103,14 +101,14 @@ extension SearchViewModel: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard self.model.items.indices.contains(indexPath.item) else { return }
-//        
-//        let item = self.model.items[indexPath.item]
-//        let model = DetailModel(
-//            pageId: item.pageId,
-//            titile: item.title
-//        )
-//        
-//        self.showDetailPipe.input.send(value: model)
+        guard self.model.items.indices.contains(indexPath.item) else { return }
+        
+        let item = self.model.items[indexPath.item]
+        let model = DetailModel(
+            pageId: item.pageId,
+            titile: item.title
+        )
+        
+        self.showDetailRelay.accept(model)
     }
 }

@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 
     private func setupBind() {
         // outputs
-        self.viewModel.outputs.reloadData.drive(onNext: { [weak self] in self?.collectionView.reloadData() })
+        self.viewModel.outputs.collectionViewItems.drive(self.collectionView.rx.items(dataSource: SearchCollectionViewDataSource()))
         self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder())
         self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD())
         self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD())
@@ -41,7 +41,6 @@ class ViewController: UIViewController {
 //        self.reactive.showDetail <~ self.viewModel.outputs.showDetail
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
-        self.collectionView.dataSource = self.viewModel.collectionViewDataSource
         self.collectionView.delegate = self.viewModel.collectionViewDelegate
     }
 }

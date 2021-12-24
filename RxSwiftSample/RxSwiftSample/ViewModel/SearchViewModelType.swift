@@ -13,7 +13,7 @@ import RxCocoa
 protocol SearchViewModelInputs: AnyObject {}
 
 protocol SearchViewModelOutputs: AnyObject {
-    var reloadData: Driver<Void> { get }
+    var collectionViewItems: Driver<[SearchResultItemModel]> { get }
     var searchBarBecomeFirstResponder: Driver<Void> { get }
     var showProgress: Driver<Void> { get }
     var dismissProgress: Driver<Void> { get }
@@ -25,5 +25,4 @@ protocol SearchViewModelType: AnyObject {
     var inputs: SearchViewModelInputs { get }
     var outputs: SearchViewModelOutputs { get }
     var searchBarDelegate: UISearchBarDelegate { get }
-    var collectionViewDataSource: UICollectionViewDataSource { get }
 }

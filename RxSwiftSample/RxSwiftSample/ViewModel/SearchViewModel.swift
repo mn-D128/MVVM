@@ -37,7 +37,6 @@ extension SearchViewModel: SearchViewModelType {
     var inputs: SearchViewModelInputs { self }
     var outputs: SearchViewModelOutputs { self }
     var searchBarDelegate: UISearchBarDelegate { self }
-    var collectionViewDataSource: UICollectionViewDataSource { self }
     var collectionViewDelegate: UICollectionViewDelegate { self }
 }
 
@@ -48,8 +47,12 @@ extension SearchViewModel: SearchViewModelInputs {}
 // MARK: - SearchViewModelOutputs
 
 extension SearchViewModel: SearchViewModelOutputs {
-    var reloadData: Driver<Void> {
-        self.search.elements.map { _ in }.asDriver(onErrorDriveWith: .empty())
+    var collectionViewItems: Driver<[SearchResultItemModel]> {
+        self.search.elements
+            .compactMap { [weak self] in
+                self?.model.items
+            }
+            .asDriver(onErrorDriveWith: .empty())
     }
 
     var searchBarBecomeFirstResponder: Driver<Void> {
@@ -81,25 +84,6 @@ extension SearchViewModel: UISearchBarDelegate {
         
         let text = searchBar.text ?? ""
         self.search.execute(text)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension SearchViewModel: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.model.items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseCellType: SearchResultItemCell.self, for: indexPath)
-
-        if self.model.items.indices.contains(indexPath.item) {
-            let item = self.model.items[indexPath.item]
-            cell.setTitle(item.title)
-        }
-
-        return cell
     }
 }
 

@@ -28,6 +28,7 @@
 		9E60B63A2774CE0A00E53FA0 /* SearchResultItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B6392774CE0A00E53FA0 /* SearchResultItemModel.swift */; };
 		9E60B63F2776198C00E53FA0 /* Reactive+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B63E2776198C00E53FA0 /* Reactive+NSObject.swift */; };
 		9E60B64127761C3B00E53FA0 /* Reactive+UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B64027761C3B00E53FA0 /* Reactive+UIResponder.swift */; };
+		9E60B64427761EB300E53FA0 /* SearchCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60B64327761EB300E53FA0 /* SearchCollectionViewDataSource.swift */; };
 		C09BF520397D3AAF6E492CEF /* libPods-RxSwiftSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC16F9D830365FEA18BF5243 /* libPods-RxSwiftSample.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		9E60B6392774CE0A00E53FA0 /* SearchResultItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultItemModel.swift; path = ../../../Common/Model/SearchResultItemModel.swift; sourceTree = "<group>"; };
 		9E60B63E2776198C00E53FA0 /* Reactive+NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+NSObject.swift"; sourceTree = "<group>"; };
 		9E60B64027761C3B00E53FA0 /* Reactive+UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIResponder.swift"; sourceTree = "<group>"; };
+		9E60B64327761EB300E53FA0 /* SearchCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		AC16F9D830365FEA18BF5243 /* libPods-RxSwiftSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RxSwiftSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				9E60B6312774CB5200E53FA0 /* Repository */,
 				9E60B6102774C59300E53FA0 /* View */,
 				9E60B6342774CB9C00E53FA0 /* Model */,
+				9E60B64227761E8D00E53FA0 /* DataSource */,
 				9E60B61D2774C64600E53FA0 /* ViewModel */,
 				9E60B61C2774C5FA00E53FA0 /* ViewController */,
 				9E60B5FA2774C42700E53FA0 /* AppDelegate.swift */,
@@ -209,6 +212,14 @@
 				9E60B64027761C3B00E53FA0 /* Reactive+UIResponder.swift */,
 			);
 			path = Reactive;
+			sourceTree = "<group>";
+		};
+		9E60B64227761E8D00E53FA0 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9E60B64327761EB300E53FA0 /* SearchCollectionViewDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		C982926EFFDFB7688220C528 /* Pods */ = {
@@ -319,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E60B64127761C3B00E53FA0 /* Reactive+UIResponder.swift in Sources */,
+				9E60B64427761EB300E53FA0 /* SearchCollectionViewDataSource.swift in Sources */,
 				9E60B6202774C64600E53FA0 /* SearchViewModelType.swift in Sources */,
 				9E60B6302774C96D00E53FA0 /* DataStore.swift in Sources */,
 				9E60B6172774C59300E53FA0 /* SearchResponse.swift in Sources */,

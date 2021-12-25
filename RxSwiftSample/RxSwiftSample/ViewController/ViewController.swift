@@ -20,6 +20,8 @@ class ViewController: UIViewController {
 
     private let viewModel = SearchViewModel()
 
+    private let disposeBag = DisposeBag()
+
     // MARK: - UIViewController
 
     override func viewDidLoad() {
@@ -32,12 +34,12 @@ class ViewController: UIViewController {
 
     private func setupBind() {
         // outputs
-        self.viewModel.outputs.collectionViewItems.drive(self.collectionView.rx.items(dataSource: SearchCollectionViewDataSource()))
-        self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder)
-        self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD)
-        self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD)
-        self.viewModel.outputs.showError.drive(self.rx.showErrorKRProgressHUD)
-        self.viewModel.outputs.showDetail.drive(self.rx.showDetail)
+        self.viewModel.outputs.collectionViewItems.drive(self.collectionView.rx.items(dataSource: SearchCollectionViewDataSource())).disposed(by: self.disposeBag)
+        self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder).disposed(by: self.disposeBag)
+        self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD).disposed(by: self.disposeBag)
+        self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD).disposed(by: self.disposeBag)
+        self.viewModel.outputs.showError.drive(self.rx.showErrorKRProgressHUD).disposed(by: self.disposeBag)
+        self.viewModel.outputs.showDetail.drive(self.rx.showDetail).disposed(by: self.disposeBag)
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
         self.collectionView.delegate = self.viewModel.collectionViewDelegate

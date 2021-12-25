@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 import Foundation
 import RxCocoa
+import RxSwift
 
 final class DetailViewController: UIViewController {
 
@@ -19,6 +20,8 @@ final class DetailViewController: UIViewController {
     }()
 
     private let viewModel: DetailViewModelType
+    
+    private let disposeBag = DisposeBag()
 
     // MARK: - UIViewController
 
@@ -47,7 +50,12 @@ final class DetailViewController: UIViewController {
     // MARK: - Private
 
     private func setupBind() {
-        self.viewModel.outputs.title.drive(self.rx.title)
-        self.viewModel.outputs.webViewRequest.drive(self.webView.rx.load)
+        self.viewModel.outputs.title
+            .drive(self.rx.title)
+            .disposed(by: self.disposeBag)
+ 
+        self.viewModel.outputs.webViewRequest
+            .drive(self.webView.rx.load)
+            .disposed(by: self.disposeBag)
     }
 }

@@ -20,7 +20,13 @@ final class ViewController: UIViewController {
 
     private let viewModel = SearchViewModel()
 
+    private var disposable = CompositeDisposable()
+
     // MARK: - UIViewController
+
+    deinit {
+        self.disposable.dispose()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +34,27 @@ final class ViewController: UIViewController {
         self.setupBind()
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+        if self.view.window == nil {
+            self.view = nil
+        }
+    }
+
     // MARK: - Private
 
     private func setupBind() {
+        self.disposable.dispose()
+        self.disposable = CompositeDisposable()
+
         // outputs
-        self.collectionView.reactive.reloadData <~ self.viewModel.outputs.reloadData
-        self.searchBar.reactive.becomeFirstResponder <~ self.viewModel.outputs.searchBarBecomeFirstResponder
-        self.reactive.showKRProgressHUD <~ self.viewModel.outputs.showProgress
-        self.reactive.dismissKRProgressHUD <~ self.viewModel.outputs.dismissProgress
-        self.reactive.showErrorKRProgressHUD <~ self.viewModel.outputs.showError
-        self.reactive.showDetail <~ self.viewModel.outputs.showDetail
+        self.disposable += self.collectionView.reactive.reloadData <~ self.viewModel.outputs.reloadData
+        self.disposable += self.searchBar.reactive.becomeFirstResponder <~ self.viewModel.outputs.searchBarBecomeFirstResponder
+        self.disposable += self.reactive.showKRProgressHUD <~ self.viewModel.outputs.showProgress
+        self.disposable += self.reactive.dismissKRProgressHUD <~ self.viewModel.outputs.dismissProgress
+        self.disposable += self.reactive.showErrorKRProgressHUD <~ self.viewModel.outputs.showError
+        self.disposable += self.reactive.showDetail <~ self.viewModel.outputs.showDetail
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
         self.collectionView.dataSource = self.viewModel.collectionViewDataSource

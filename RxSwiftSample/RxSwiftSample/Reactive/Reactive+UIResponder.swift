@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 extension Reactive where Base: UIResponder {
-    func becomeFirstResponder() -> Binder<Void> {
+    var becomeFirstResponder: Binder<Void> {
         Binder(self.base) { responder, _ in
             responder.becomeFirstResponder()
         }

@@ -33,11 +33,11 @@ class ViewController: UIViewController {
     private func setupBind() {
         // outputs
         self.viewModel.outputs.collectionViewItems.drive(self.collectionView.rx.items(dataSource: SearchCollectionViewDataSource()))
-        self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder())
-        self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD())
-        self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD())
-        self.viewModel.outputs.showError.drive(self.rx.showErrorKRProgressHUD())
-        self.viewModel.outputs.showDetail.drive(self.rx.showDetail())
+        self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder)
+        self.viewModel.outputs.showProgress.drive(self.rx.showKRProgressHUD)
+        self.viewModel.outputs.dismissProgress.drive(self.rx.dismissKRProgressHUD)
+        self.viewModel.outputs.showError.drive(self.rx.showErrorKRProgressHUD)
+        self.viewModel.outputs.showDetail.drive(self.rx.showDetail)
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
         self.collectionView.delegate = self.viewModel.collectionViewDelegate
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
 // MARK: - Reactive
 
 private extension Reactive where Base == ViewController {
-    func showDetail() -> Binder<DetailModel> {
+    var showDetail: Binder<DetailModel> {
         Binder(self.base) { target, value in
             target.showDetail(model: value)
         }

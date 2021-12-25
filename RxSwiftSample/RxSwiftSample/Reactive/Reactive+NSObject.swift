@@ -10,19 +10,19 @@ import RxSwift
 import KRProgressHUD
 
 extension Reactive where Base: NSObject {
-    func showKRProgressHUD() -> Binder<Void> {
+    var showKRProgressHUD: Binder<Void> {
         Binder(self.base) { _, _ in
             KRProgressHUD.show()
         }
     }
 
-    func dismissKRProgressHUD() -> Binder<Void> {
+    var dismissKRProgressHUD: Binder<Void> {
         Binder(self.base) { _, _ in
             KRProgressHUD.dismiss()
         }
     }
 
-    func showErrorKRProgressHUD() -> Binder<String?> {
+    var showErrorKRProgressHUD: Binder<String?> {
         Binder(self.base) { _, message in
             KRProgressHUD.showError(withMessage: message)
         }

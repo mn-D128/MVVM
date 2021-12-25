@@ -10,7 +10,7 @@ import RxSwift
 import WebKit
 
 extension Reactive where Base: WKWebView {
-    func load() -> Binder<URLRequest> {
+    var load: Binder<URLRequest> {
         Binder(self.base) { target, value in
             target.load(value)
         }

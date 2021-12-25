@@ -48,6 +48,6 @@ final class DetailViewController: UIViewController {
 
     private func setupBind() {
         self.viewModel.outputs.title.drive(self.rx.title)
-        self.viewModel.outputs.webViewRequest.drive(self.webView.rx.load())
+        self.viewModel.outputs.webViewRequest.drive(self.webView.rx.load)
     }
 }

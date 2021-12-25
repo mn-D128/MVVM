@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
     private let viewModel = SearchViewModel()
 
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     // MARK: - UIViewController
 
@@ -30,9 +30,19 @@ class ViewController: UIViewController {
         self.setupBind()
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+        if self.view.window == nil {
+            self.view = nil
+        }
+    }
+
     // MARK: - Private
 
     private func setupBind() {
+        self.disposeBag = DisposeBag()
+
         // outputs
         self.viewModel.outputs.collectionViewItems.drive(self.collectionView.rx.items(dataSource: SearchCollectionViewDataSource())).disposed(by: self.disposeBag)
         self.viewModel.outputs.searchBarBecomeFirstResponder.drive(self.searchBar.rx.becomeFirstResponder).disposed(by: self.disposeBag)

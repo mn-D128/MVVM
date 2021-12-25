@@ -46,11 +46,7 @@ extension SearchViewModel: SearchViewModelInputs {}
 
 extension SearchViewModel: SearchViewModelOutputs {
     var collectionViewItems: Driver<[SearchResultItemModel]> {
-        self.search.elements
-            .compactMap { [weak self] in
-                self?.model.items
-            }
-            .asDriver(onErrorDriveWith: .empty())
+        self.model.rx.observe(\.items).asDriver(onErrorDriveWith: .empty())
     }
 
     var searchBarBecomeFirstResponder: Driver<Void> {

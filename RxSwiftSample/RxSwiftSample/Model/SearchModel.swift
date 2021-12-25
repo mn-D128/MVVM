@@ -11,7 +11,7 @@ import RxSwift
 final class SearchModel: NSObject {
     private let repository = Repository()
 
-    private(set) var items = [SearchResultItemModel]()
+    @objc private(set) dynamic var items = [SearchResultItemModel]()
 
     func search(_ search: String) -> Single<Void> {
         self.repository.search(search)

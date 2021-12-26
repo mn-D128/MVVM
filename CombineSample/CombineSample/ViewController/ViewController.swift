@@ -40,6 +40,8 @@ final class ViewController: UIViewController {
     // MARK: - Private
 
     private func setupBind() {
+        self.cancellable = Set<AnyCancellable>()
+
         // outputs
         self.viewModel.outputs.reloadData
             .sink(receiveValue: { [weak self] in self?.collectionView.reloadData() })

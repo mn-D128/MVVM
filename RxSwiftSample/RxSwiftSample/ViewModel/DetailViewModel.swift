@@ -36,7 +36,7 @@ extension DetailViewModel: DetailViewModelInputs {}
 
 extension DetailViewModel: DetailViewModelOutputs {
     var title: Driver<String?> {
-        self.model.rx.observe(\.title).map { $0 }.asDriver(onErrorDriveWith: .empty())
+        BehaviorRelay(value: self.model.title).asDriver().compactMap { $0 }
     }
 
     var webViewRequest: Driver<URLRequest> {

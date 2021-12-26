@@ -35,7 +35,9 @@ extension DetailViewModel: DetailViewModelInputs {}
 
 extension DetailViewModel: DetailViewModelOutputs {
     var title: AnyPublisher<String?, Never> {
-        self.model.publisher(for: \.title).map { $0 }.eraseToAnyPublisher()
+        Just(self.model.title)
+            .map { $0 }
+            .eraseToAnyPublisher()
     }
 
     var webViewRequest: AnyPublisher<URLRequest, Never> {

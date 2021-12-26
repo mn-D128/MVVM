@@ -46,7 +46,7 @@ final class ViewController: UIViewController {
             .store(in: &cancellable)
         self.viewModel.outputs.searchBarBecomeFirstResponder
             .sink(receiveValue: { [weak self] in self?.searchBar.becomeFirstResponder() })
-            .store(in: &cancellable)        
+            .store(in: &cancellable)
         self.viewModel.outputs.showProgress
             .sink(receiveValue: { KRProgressHUD.show() })
             .store(in: &cancellable)

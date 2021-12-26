@@ -43,22 +43,22 @@ final class ViewController: UIViewController {
         // outputs
         self.viewModel.outputs.reloadData
             .sink(receiveValue: { [weak self] in self?.collectionView.reloadData() })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
         self.viewModel.outputs.searchBarBecomeFirstResponder
             .sink(receiveValue: { [weak self] in self?.searchBar.becomeFirstResponder() })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
         self.viewModel.outputs.showProgress
             .sink(receiveValue: { KRProgressHUD.show() })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
         self.viewModel.outputs.dismissProgress
             .sink(receiveValue: { KRProgressHUD.dismiss() })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
         self.viewModel.outputs.showError
             .sink(receiveValue: { KRProgressHUD.showError(withMessage: $0) })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
         self.viewModel.outputs.showDetail
             .sink(receiveValue: { [weak self] in self?.showDetail(model: $0) })
-            .store(in: &cancellable)
+            .store(in: &self.cancellable)
 
         self.searchBar.delegate = self.viewModel.searchBarDelegate
         self.collectionView.dataSource = self.viewModel.collectionViewDataSource

@@ -11,7 +11,7 @@ import Combine
 final class SearchModel: NSObject {
     private let repository = Repository()
 
-    @objc private(set) dynamic var items = [SearchResultItemModel]()
+    @Published private(set) var items = [SearchResultItemModel]()
 
     func search(_ search: String) -> AnyPublisher<Void, Error> {
         self.repository.search(search)

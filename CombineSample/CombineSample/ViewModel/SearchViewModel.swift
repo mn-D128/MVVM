@@ -46,7 +46,7 @@ extension SearchViewModel: SearchViewModelInputs {}
 
 extension SearchViewModel: SearchViewModelOutputs {
     var reloadData: AnyPublisher<Void, Never> {
-        self.model.publisher(for: \.items)
+        self.model.$items
             .map { _ in }
             .eraseToAnyPublisher()
     }

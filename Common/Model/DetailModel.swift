@@ -15,10 +15,10 @@ final class DetailModel: NSObject {
 
     init(
         pageId: PageId,
-        titile: String
+        title: String
     ) {
         self.pageId = pageId
-        self.title = titile
+        self.title = title
 
         super.init()
     }

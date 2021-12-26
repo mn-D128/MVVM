@@ -102,7 +102,7 @@ extension SearchViewModel: UICollectionViewDelegate {
         let item = self.model.items[indexPath.item]
         let model = DetailModel(
             pageId: item.pageId,
-            titile: item.title
+            title: item.title
         )
         
         self.showDetailRelay.accept(model)

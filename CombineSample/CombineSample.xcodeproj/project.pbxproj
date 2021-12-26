@@ -31,6 +31,7 @@
 		9E63415627775357007652B7 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63415227775357007652B7 /* DetailViewModel.swift */; };
 		9E63415727775357007652B7 /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63415327775357007652B7 /* DetailViewModelType.swift */; };
 		9E63415A27776C88007652B7 /* CombineAction in Frameworks */ = {isa = PBXBuildFile; productRef = 9E63415927776C88007652B7 /* CombineAction */; };
+		9E63415D27784179007652B7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63415C27784179007652B7 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		9E63415127775357007652B7 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9E63415227775357007652B7 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		9E63415327775357007652B7 /* DetailViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
+		9E63415C27784179007652B7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D49D72A28BF25B42F8B61D26 /* Pods-CombineSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineSample.release.xcconfig"; path = "Target Support Files/Pods-CombineSample/Pods-CombineSample.release.xcconfig"; sourceTree = "<group>"; };
 		F35126172110A79A3C2399BC /* Pods-CombineSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineSample.debug.xcconfig"; path = "Target Support Files/Pods-CombineSample/Pods-CombineSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				9E63412027771B39007652B7 /* ViewController.swift */,
+				9E63415C27784179007652B7 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				9E63414427771DE4007652B7 /* SearchResultItemCell.swift in Sources */,
 				9E63414027771DE4007652B7 /* SearchResponse.swift in Sources */,
 				9E63415727775357007652B7 /* DetailViewModelType.swift in Sources */,
+				9E63415D27784179007652B7 /* DetailViewController.swift in Sources */,
 				9E63414E2777501C007652B7 /* Repository.swift in Sources */,
 				9E63412127771B39007652B7 /* ViewController.swift in Sources */,
 				9E63411D27771B39007652B7 /* AppDelegate.swift in Sources */,

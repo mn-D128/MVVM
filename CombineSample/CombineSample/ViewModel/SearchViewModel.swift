@@ -15,7 +15,7 @@ final class SearchViewModel: NSObject {
     private let search: CombineAction<String, Void, Error>
 
     // outputs
-    //private let showDetailPipe = Signal<DetailModel, Never>.pipe()
+    private let showDetailSubject = PassthroughSubject<DetailModel, Never>()
 
     // MARK: - NSObject
 
@@ -68,10 +68,10 @@ extension SearchViewModel: SearchViewModelOutputs {
     var showError: AnyPublisher<String, Never> {
         self.search.errors.map { $0.localizedDescription }.eraseToAnyPublisher()
     }
-//
-//    var showDetail: Signal<DetailModel, Never> {
-//        self.showDetailPipe.output
-//    }
+
+    var showDetail: AnyPublisher<DetailModel, Never> {
+        AnyPublisher(self.showDetailSubject)        
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -128,6 +128,6 @@ extension SearchViewModel: UICollectionViewDelegate {
             titile: item.title
         )
 
-        //self.showDetailPipe.input.send(value: model)
+        self.showDetailSubject.send(model)
     }
 }

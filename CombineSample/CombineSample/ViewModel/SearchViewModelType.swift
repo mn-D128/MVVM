@@ -17,7 +17,7 @@ protocol SearchViewModelOutputs: AnyObject {
     var showProgress: AnyPublisher<Void, Never> { get }
     var dismissProgress: AnyPublisher<Void, Never> { get }
     var showError: AnyPublisher<String, Never> { get }
-//    var showDetail: Signal<DetailModel, Never> { get }
+    var showDetail: AnyPublisher<DetailModel, Never> { get }
 }
 
 protocol SearchViewModelType: AnyObject {

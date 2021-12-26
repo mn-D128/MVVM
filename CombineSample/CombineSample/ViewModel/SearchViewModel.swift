@@ -68,7 +68,7 @@ extension SearchViewModel: SearchViewModelOutputs {
     }
 
     var showDetail: AnyPublisher<DetailModel, Never> {
-        AnyPublisher(self.showDetailSubject)        
+        self.showDetailSubject.eraseToAnyPublisher()
     }
 }
 

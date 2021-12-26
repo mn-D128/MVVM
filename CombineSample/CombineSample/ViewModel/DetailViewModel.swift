@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class DetailViewModel: NSObject {
     private let model: DetailModel
@@ -33,16 +34,16 @@ extension DetailViewModel: DetailViewModelInputs {}
 // MARK: - DetailViewModelOutputs
 
 extension DetailViewModel: DetailViewModelOutputs {
-//    var title: SignalProducer<String?, Never> {
-//        SignalProducer(value: self.model.title)
-//    }
-//
-//    var webViewRequest: SignalProducer<URLRequest, Never> {
-//        var request: URLRequest?
-//        if let url = URL(string: "https://ja.wikipedia.org/?curid=\(self.model.pageId)") {
-//            request = URLRequest(url: url)
-//        }
-//
-//        return SignalProducer(value: request).skipNil()
-//    }
+    var title: AnyPublisher<String?, Never> {
+        self.model.publisher(for: \.title).map { $0 }.eraseToAnyPublisher()
+    }
+
+    var webViewRequest: AnyPublisher<URLRequest, Never> {
+        Just(self.model.pageId)
+            .compactMap {
+                guard let url = URL(string: "https://ja.wikipedia.org/?curid=\($0)") else { return nil }
+                return URLRequest(url: url)
+            }
+            .eraseToAnyPublisher()
+    }
 }

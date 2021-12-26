@@ -8,9 +8,9 @@
 import UIKit
 import WebKit
 import Foundation
+import Combine
 
 final class DetailViewController: UIViewController {
-
     private let webView: WKWebView = {
         let view = WKWebView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -18,6 +18,8 @@ final class DetailViewController: UIViewController {
     }()
 
     private let viewModel: DetailViewModelType
+
+    private var cancellable = Set<AnyCancellable>()
 
     // MARK: - UIViewController
 
@@ -46,8 +48,12 @@ final class DetailViewController: UIViewController {
     // MARK: - Private
 
     private func setupBind() {
-//        self.reactive.title <~ self.viewModel.outputs.title
-//        self.webView.reactive.load <~ self.viewModel.outputs.webViewRequest
+        self.viewModel.outputs.title
+            .assign(to: \.title, on: self)
+            .store(in: &self.cancellable)
+        self.viewModel.outputs.webViewRequest
+            .sink(receiveValue: { [weak self] in self?.webView.load($0) })
+            .store(in: &self.cancellable)
     }
 }
 

@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import Combine
 
 protocol DetailViewModelInputs: AnyObject {}
 
 protocol DetailViewModelOutputs: AnyObject {
-//    var title: SignalProducer<String?, Never> { get }
-//    var webViewRequest: SignalProducer<URLRequest, Never> { get }
+    var title: AnyPublisher<String?, Never> { get }
+    var webViewRequest: AnyPublisher<URLRequest, Never> { get }
 }
 
 protocol DetailViewModelType: AnyObject {

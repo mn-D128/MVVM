@@ -6,12 +6,62 @@
 //
 
 import UIKit
+import Combine
+import KRProgressHUD
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            self.collectionView.register(nibCellType: SearchResultItemCell.self)
+        }
+    }
+
+    private let viewModel = SearchViewModel()
+
+    private var cancellable = Set<AnyCancellable>()
+
+    // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.setupBind()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+        if self.view.window == nil {
+            self.view = nil
+        }
+    }
+
+    // MARK: - Private
+
+    private func setupBind() {
+        // outputs
+        self.viewModel.outputs.reloadData
+            .sink(receiveValue: { [weak self] in self?.collectionView.reloadData() })
+            .store(in: &cancellable)
+        self.viewModel.outputs.searchBarBecomeFirstResponder
+            .sink(receiveValue: { [weak self] in self?.searchBar.becomeFirstResponder() })
+            .store(in: &cancellable)        
+        self.viewModel.outputs.showProgress
+            .sink(receiveValue: { KRProgressHUD.show() })
+            .store(in: &cancellable)
+        self.viewModel.outputs.dismissProgress
+            .sink(receiveValue: { KRProgressHUD.dismiss() })
+            .store(in: &cancellable)
+        self.viewModel.outputs.showError
+            .sink(receiveValue: { KRProgressHUD.showError(withMessage: $0) })
+            .store(in: &cancellable)
+        
+//        self.disposable += self.reactive.showDetail <~ self.viewModel.outputs.showDetail
+
+        self.searchBar.delegate = self.viewModel.searchBarDelegate
+        self.collectionView.dataSource = self.viewModel.collectionViewDataSource
+        self.collectionView.delegate = self.viewModel.collectionViewDelegate
     }
 
 

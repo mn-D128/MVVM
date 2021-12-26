@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CombineAction",
+        "repositoryURL": "https://github.com/nisin/CombineAction.swift",
+        "state": {
+          "branch": "main",
+          "revision": "2b646c342d0ad0957bc61fd3fbb741c69007f04c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -44,7 +44,7 @@ extension SearchViewModel: SearchViewModelInputs {}
 
 extension SearchViewModel: SearchViewModelOutputs {
     var reloadData: Signal<Void, Never> {
-        self.search.values
+        self.model.reactive.signal(for: \.items).map { _ in }
     }
 
     var searchBarBecomeFirstResponder: Signal<Void, Never> {

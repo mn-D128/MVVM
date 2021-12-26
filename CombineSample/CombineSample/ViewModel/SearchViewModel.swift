@@ -24,7 +24,7 @@ final class SearchViewModel: NSObject {
         self.model = model
         self.search = CombineAction { model.search($0) }
 
-        super.init()        
+        super.init()
     }
 }
 

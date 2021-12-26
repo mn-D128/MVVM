@@ -56,7 +56,7 @@ extension SearchViewModel: SearchViewModelOutputs {
     }
 
     var dismissProgress: Signal<Void, Never> {
-        self.search.completed
+        self.search.values
     }
 
     var showError: Signal<String, Never> {

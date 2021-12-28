@@ -16,6 +16,7 @@ target 'ReactiveSwiftSample' do
   pod 'Moya/ReactiveSwift'
   pod 'ReactiveCocoa'
   pod 'ReactiveSwift'
+  pod 'SwiftFormat/CLI'
 
 end
 

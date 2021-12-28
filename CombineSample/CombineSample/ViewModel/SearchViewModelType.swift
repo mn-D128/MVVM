@@ -5,9 +5,9 @@
 //  Created by Masanori Nakano on 2021/12/19.
 //
 
+import Combine
 import Foundation
 import UIKit
-import Combine
 
 protocol SearchViewModelInputs: AnyObject {}
 

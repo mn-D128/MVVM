@@ -5,10 +5,10 @@
 //  Created by Masanori Nakano on 2021/12/26.
 //
 
+import Combine
+import Foundation
 import UIKit
 import WebKit
-import Foundation
-import Combine
 
 final class DetailViewController: UIViewController {
     private let webView: WKWebView = {
@@ -28,7 +28,8 @@ final class DetailViewController: UIViewController {
 
         super.init(coder: coder)
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -56,4 +57,3 @@ final class DetailViewController: UIViewController {
             .store(in: &self.cancellable)
     }
 }
-

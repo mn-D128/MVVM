@@ -5,9 +5,9 @@
 //  Created by Masanori Nakano on 2021/12/25.
 //
 
-import UIKit
 import Combine
 import KRProgressHUD
+import UIKit
 
 final class ViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -80,4 +80,3 @@ final class ViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-

@@ -5,8 +5,8 @@
 //  Created by Masanori Nakano on 2021/12/22.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 final class DetailViewModel: NSObject {
     private let model: DetailModel

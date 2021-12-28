@@ -5,9 +5,9 @@
 //  Created by Masanori Nakano on 2021/12/18.
 //
 
+import Combine
 import Foundation
 import Moya
-import Combine
 
 final class DataStore: NSObject {
     static let shared = DataStore()
@@ -24,11 +24,11 @@ final class DataStore: NSObject {
 
     private func request<T: Decodable>(_ token: WikipediaAPI) -> AnyPublisher<T, Error> {
         self.provider.requestPublisher(
-                token,
-                callbackQueue: self.callbackQueue
-            )
-            .map(T.self, using: self.decoder)
-            .mapError { $0 as Error }
-            .eraseToAnyPublisher()
+            token,
+            callbackQueue: self.callbackQueue
+        )
+        .map(T.self, using: self.decoder)
+        .mapError { $0 as Error }
+        .eraseToAnyPublisher()
     }
 }

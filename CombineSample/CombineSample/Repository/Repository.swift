@@ -5,8 +5,8 @@
 //  Created by Masanori Nakano on 2021/12/19.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 final class Repository: NSObject {
     // MARK: - Public

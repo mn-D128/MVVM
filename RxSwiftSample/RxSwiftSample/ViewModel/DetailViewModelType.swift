@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 import RxCocoa
+import UIKit
 
 protocol DetailViewModelInputs: AnyObject {}
 

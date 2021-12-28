@@ -48,4 +48,3 @@ extension DetailViewModel: DetailViewModelOutputs {
         return BehaviorRelay(value: request).asDriver().compactMap { $0 }
     }
 }
-

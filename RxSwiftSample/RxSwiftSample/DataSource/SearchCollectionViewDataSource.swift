@@ -19,7 +19,7 @@ extension SearchCollectionViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.items.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseCellType: SearchResultItemCell.self, for: indexPath)
 
@@ -36,7 +36,7 @@ extension SearchCollectionViewDataSource: UICollectionViewDataSource {
 
 extension SearchCollectionViewDataSource: RxCollectionViewDataSourceType {
     typealias Element = [SearchResultItemModel]
-    
+
     func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) {
         Binder(self) { dataSource, element in
             dataSource.items = element

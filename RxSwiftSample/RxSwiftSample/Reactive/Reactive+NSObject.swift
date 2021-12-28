@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import RxSwift
 import KRProgressHUD
+import RxSwift
 
 extension Reactive where Base: NSObject {
     var showKRProgressHUD: Binder<Void> {

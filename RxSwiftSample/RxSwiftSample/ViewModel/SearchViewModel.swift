@@ -5,11 +5,11 @@
 //  Created by Masanori Nakano on 2021/12/19.
 //
 
-import Foundation
-import UIKit
 import Action
-import RxSwift
+import Foundation
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class SearchViewModel: NSObject {
     private let model: SearchModel
@@ -75,7 +75,7 @@ extension SearchViewModel: SearchViewModelOutputs {
 extension SearchViewModel: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
+
         let text = searchBar.text ?? ""
         self.search.execute(text)
     }
@@ -85,7 +85,7 @@ extension SearchViewModel: UISearchBarDelegate {
 
 extension SearchViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero        
+        let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
         return CGSize(
             width: collectionView.frame.width - sectionInset.left - sectionInset.right,
             height: 44
@@ -98,13 +98,13 @@ extension SearchViewModel: UICollectionViewDelegateFlowLayout {
 extension SearchViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.model.items.indices.contains(indexPath.item) else { return }
-        
+
         let item = self.model.items[indexPath.item]
         let model = DetailModel(
             pageId: item.pageId,
             title: item.title
         )
-        
+
         self.showDetailRelay.accept(model)
     }
 }

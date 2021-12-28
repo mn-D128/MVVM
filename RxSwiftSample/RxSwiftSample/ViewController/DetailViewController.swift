@@ -5,14 +5,13 @@
 //  Created by Masanori Nakano on 2021/12/25.
 //
 
-import UIKit
-import WebKit
 import Foundation
 import RxCocoa
 import RxSwift
+import UIKit
+import WebKit
 
 final class DetailViewController: UIViewController {
-
     private let webView: WKWebView = {
         let view = WKWebView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +19,7 @@ final class DetailViewController: UIViewController {
     }()
 
     private let viewModel: DetailViewModelType
-    
+
     private let disposeBag = DisposeBag()
 
     // MARK: - UIViewController
@@ -30,7 +29,8 @@ final class DetailViewController: UIViewController {
 
         super.init(coder: coder)
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -53,7 +53,7 @@ final class DetailViewController: UIViewController {
         self.viewModel.outputs.title
             .drive(self.rx.title)
             .disposed(by: self.disposeBag)
- 
+
         self.viewModel.outputs.webViewRequest
             .drive(self.webView.rx.load)
             .disposed(by: self.disposeBag)

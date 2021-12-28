@@ -5,10 +5,10 @@
 //  Created by Masanori Nakano on 2021/12/23.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import KRProgressHUD
+import RxCocoa
+import RxSwift
+import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!

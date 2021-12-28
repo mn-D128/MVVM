@@ -24,7 +24,7 @@ final class DataStore: NSObject {
 
     private func request<T: Decodable>(_ token: WikipediaAPI) -> Single<T> {
         let decoder = self.decoder
-        
+
         return self.provider.rx.request(
             token,
             callbackQueue: self.callbackQueue

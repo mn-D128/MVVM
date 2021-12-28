@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 import ReactiveSwift
+import UIKit
 
 protocol DetailViewModelInputs: AnyObject {}
 

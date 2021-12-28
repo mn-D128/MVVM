@@ -34,7 +34,7 @@ final class DataStore: NSObject {
                 do {
                     let value = try decoder.decode(T.self, from: $0.data)
                     return .success(value)
-                } catch {                    
+                } catch {
                     return .failure(.underlying(error, $0))
                 }
             }

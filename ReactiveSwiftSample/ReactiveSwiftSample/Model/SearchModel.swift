@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import ReactiveSwift
 import ReactiveCocoa
+import ReactiveSwift
 
 final class SearchModel: NSObject {
     private let repository = Repository()

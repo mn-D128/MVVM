@@ -73,7 +73,7 @@ extension SearchViewModel: SearchViewModelOutputs {
 extension SearchViewModel: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
+
         let text = searchBar.text ?? ""
         self.search.apply(text).start()
     }
@@ -85,7 +85,7 @@ extension SearchViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.model.items.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseCellType: SearchResultItemCell.self, for: indexPath)
 
@@ -102,7 +102,7 @@ extension SearchViewModel: UICollectionViewDataSource {
 
 extension SearchViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero        
+        let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
         return CGSize(
             width: collectionView.frame.width - sectionInset.left - sectionInset.right,
             height: 44
@@ -115,13 +115,13 @@ extension SearchViewModel: UICollectionViewDelegateFlowLayout {
 extension SearchViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.model.items.indices.contains(indexPath.item) else { return }
-        
+
         let item = self.model.items[indexPath.item]
         let model = DetailModel(
             pageId: item.pageId,
             title: item.title
         )
-        
+
         self.showDetailPipe.input.send(value: model)
     }
 }

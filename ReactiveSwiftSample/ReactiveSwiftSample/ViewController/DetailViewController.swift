@@ -5,14 +5,13 @@
 //  Created by Masanori Nakano on 2021/12/22.
 //
 
-import UIKit
-import WebKit
 import Foundation
 import ReactiveCocoa
 import ReactiveSwift
+import UIKit
+import WebKit
 
 final class DetailViewController: UIViewController {
-
     private let webView: WKWebView = {
         let view = WKWebView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +27,8 @@ final class DetailViewController: UIViewController {
 
         super.init(coder: coder)
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }

@@ -5,10 +5,10 @@
 //  Created by Masanori Nakano on 2021/12/18.
 //
 
-import UIKit
-import ReactiveSwift
-import ReactiveCocoa
 import KRProgressHUD
+import ReactiveCocoa
+import ReactiveSwift
+import UIKit
 
 final class ViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import ReactiveSwift
 import KRProgressHUD
+import ReactiveSwift
 
 extension Reactive where Base: NSObject {
     var showKRProgressHUD: BindingTarget<Void> {
@@ -15,7 +15,7 @@ extension Reactive where Base: NSObject {
             KRProgressHUD.show()
         }
     }
-    
+
     var dismissKRProgressHUD: BindingTarget<Void> {
         self.makeBindingTarget { _, _ in
             KRProgressHUD.dismiss()

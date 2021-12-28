@@ -17,11 +17,13 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - SwiftFormat/CLI (0.48.18)
 
 DEPENDENCIES:
   - Action
   - KRProgressHUD
   - Moya/RxSwift
+  - SwiftFormat/CLI
 
 SPEC REPOS:
   trunk:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftFormat
 
 SPEC CHECKSUMS:
   Action: 47f1825511907b4fcd79dd7a7db9526c20f78018
@@ -43,7 +46,8 @@ SPEC CHECKSUMS:
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SwiftFormat: 7dd2b33a0a3d61095b61c911b6d89ff962ae695c
 
-PODFILE CHECKSUM: 60dbd444ff7084b4adbae9a6b82ec557a5632213
+PODFILE CHECKSUM: 58064a9054dbaa7e9e73860c4ea0b54cfcd85fc1
 
 COCOAPODS: 1.11.2

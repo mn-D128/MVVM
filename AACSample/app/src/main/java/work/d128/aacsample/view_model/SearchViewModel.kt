@@ -1,7 +1,6 @@
 package work.d128.aacsample.view_model
 
 import android.app.Application
-import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -36,8 +35,8 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                     runCatching {
                         repository.search(query)
                     }.fold(
-                        onSuccess = {
-                            dataSet = it.query.search.map { SearchResultItemModel(it) }
+                        onSuccess = { response ->
+                            dataSet = response.query.search.map { SearchResultItemModel(it) }
                             adapter.setDataSet(dataSet)
                         },
                         onFailure = {

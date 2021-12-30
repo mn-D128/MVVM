@@ -1,12 +1,13 @@
 package work.d128.aacsample.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import work.d128.aacsample.databinding.RowItemSearchBinding
 import work.d128.aacsample.model.SearchResultItemModel
 
-class SearchAdapter() : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     private var dataSet = listOf<SearchResultItemModel>()
     private var selectedItemListener: OnSelectedItemListener? = null
@@ -28,6 +29,7 @@ class SearchAdapter() : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun getItemCount() = dataSet.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setDataSet(dataSet: List<SearchResultItemModel>) {
         this.dataSet = dataSet
         this.notifyDataSetChanged()

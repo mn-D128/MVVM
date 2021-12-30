@@ -23,6 +23,8 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
     private val repository = Repository()
     private var dataSet = listOf<SearchResultItemModel>()
     private var searchJob: Job? = null
+    var searchViewQuery = ""
+        private set
 
     val adapter by lazy {
         SearchAdapter().apply {
@@ -33,6 +35,8 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
     val searchViewQueryTextListener by lazy {
         object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                searchViewQuery = query
+
                 viewModelScope.launch {
                     if (searchJob?.isCompleted == false && searchJob?.isCancelled == false) {
                         searchJob?.cancelAndJoin()

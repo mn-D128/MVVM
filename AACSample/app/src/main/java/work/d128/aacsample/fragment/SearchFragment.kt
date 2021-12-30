@@ -85,6 +85,7 @@ class SearchFragment: Fragment() {
         this.searchView = (menu.findItem(R.id.search).actionView as SearchView).apply {
             this.isIconifiedByDefault = false
             this.setOnQueryTextListener(viewModel.searchViewQueryTextListener)
+            this.setQuery(viewModel.searchViewQuery, false)
         }
     }
 

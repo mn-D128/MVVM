@@ -27,7 +27,9 @@ class SearchFragment: Fragment() {
                viewModel.searchViewClearFocus.collect {
                    searchView?.clearFocus()
                }
+           }
 
+           lifecycleScope.launchWhenResumed {
                viewModel.showDetail.collect {
                    val bundle = DetailFragment.createArguments(it)
                    parentFragmentManager.commit {

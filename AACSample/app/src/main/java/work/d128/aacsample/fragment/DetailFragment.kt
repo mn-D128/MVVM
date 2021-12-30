@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import work.d128.aacsample.databinding.FragmentDetailBinding
@@ -12,6 +13,9 @@ import work.d128.aacsample.model.DetailModel
 class DetailFragment: Fragment() {
     private var model: DetailModel? = null
     private var binding: FragmentDetailBinding? = null
+    private val actionBar: ActionBar?
+        get() = (this.requireActivity() as AppCompatActivity).supportActionBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +40,7 @@ class DetailFragment: Fragment() {
             this.binding?.webView?.loadUrl(it)
         }
 
-        (this.requireActivity() as AppCompatActivity).supportActionBar?.title = this.model?.title
+        actionBar?.title = this.model?.title
     }
 
     override fun onDestroyView() {
@@ -44,6 +48,12 @@ class DetailFragment: Fragment() {
 
         // https://developer.android.com/topic/libraries/view-binding#fragments
         this.binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     companion object {

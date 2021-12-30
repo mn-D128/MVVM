@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -93,5 +94,11 @@ class SearchFragment: Fragment() {
         super.onDestroyOptionsMenu()
 
         this.searchView = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        (this.requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 }

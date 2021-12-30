@@ -6,6 +6,8 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -15,10 +17,12 @@ import work.d128.aacsample.adapter.SearchAdapter
 import work.d128.aacsample.model.DetailModel
 import work.d128.aacsample.model.SearchResultItemModel
 import work.d128.aacsample.repository.Repository
+import java.util.concurrent.CancellationException
 
 class SearchViewModel(application: Application): AndroidViewModel(application) {
     private val repository = Repository()
     private var dataSet = listOf<SearchResultItemModel>()
+    private var searchJob: Job? = null
 
     val adapter by lazy {
         SearchAdapter().apply {
@@ -29,9 +33,15 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
     val searchViewQueryTextListener by lazy {
         object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                _progressBarVisibility.value = View.VISIBLE
-
                 viewModelScope.launch {
+                    if (searchJob?.isCompleted == false && searchJob?.isCancelled == false) {
+                        searchJob?.cancelAndJoin()
+                    }
+                }
+
+                searchJob = viewModelScope.launch {
+                    _progressBarVisibility.value = View.VISIBLE
+
                     runCatching {
                         repository.search(query)
                     }.fold(
@@ -40,6 +50,10 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                             adapter.setDataSet(dataSet)
                         },
                         onFailure = {
+                            if (it::class.java.superclass == CancellationException::class.java) {
+                                return@fold
+                            }
+
                             val text = it.localizedMessage ?: "通信に失敗しました"
                             Toast.makeText(application, text, Toast.LENGTH_SHORT).show()
                         }
@@ -47,6 +61,7 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                         _progressBarVisibility.value = View.INVISIBLE
                     }
                 }
+
                 return false
             }
 

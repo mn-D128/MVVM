@@ -24,6 +24,10 @@ class SearchFragment: Fragment() {
     private val viewModel :SearchViewModel by lazy {
        ViewModelProvider.AndroidViewModelFactory.getInstance(this.requireActivity().application).create(SearchViewModel::class.java).also { viewModel ->
            lifecycleScope.launchWhenResumed {
+               viewModel.searchViewClearFocus.collect {
+                   searchView?.clearFocus()
+               }
+
                viewModel.showDetail.collect {
                    val bundle = DetailFragment.createArguments(it)
                    parentFragmentManager.commit {
@@ -34,6 +38,7 @@ class SearchFragment: Fragment() {
            }
        }
     }
+    private var searchView: SearchView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,9 +80,15 @@ class SearchFragment: Fragment() {
 
         inflater.inflate(R.menu.options_menu, menu)
 
-        (menu.findItem(R.id.search).actionView as SearchView).apply {
+        this.searchView = (menu.findItem(R.id.search).actionView as SearchView).apply {
             this.isIconifiedByDefault = false
             this.setOnQueryTextListener(viewModel.searchViewQueryTextListener)
         }
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+
+        this.searchView = null
     }
 }

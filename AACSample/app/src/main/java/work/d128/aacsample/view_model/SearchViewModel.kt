@@ -40,6 +40,7 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                 }
 
                 searchJob = viewModelScope.launch {
+                    _searchViewClearFocus.emit(Unit)
                     _progressBarVisibility.value = View.VISIBLE
 
                     runCatching {
@@ -76,6 +77,9 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
 
     private val _showDetail = MutableSharedFlow<DetailModel>()
     val showDetail = this._showDetail.asSharedFlow()
+
+    private val _searchViewClearFocus = MutableSharedFlow<Unit>()
+    val searchViewClearFocus = this._searchViewClearFocus.asSharedFlow()
 
     private val selectedItemListener by lazy {
         object: SearchAdapter.OnSelectedItemListener {

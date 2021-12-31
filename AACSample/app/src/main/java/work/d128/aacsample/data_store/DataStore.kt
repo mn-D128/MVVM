@@ -1,11 +1,11 @@
 package work.d128.aacsample.data_store
 
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import work.d128.aacsample.entity.search_response.SearchResponse
-import com.google.gson.GsonBuilder
-import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.OkHttpClient
 
 object DataStore {
     private val service: ApiService by lazy {

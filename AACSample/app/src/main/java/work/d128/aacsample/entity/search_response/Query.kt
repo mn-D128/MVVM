@@ -1,6 +1,6 @@
 package work.d128.aacsample.entity.search_response
 
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class Query(

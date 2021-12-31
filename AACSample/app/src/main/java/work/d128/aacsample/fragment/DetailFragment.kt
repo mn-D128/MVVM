@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import work.d128.aacsample.databinding.FragmentDetailBinding
 import work.d128.aacsample.model.DetailModel
 
-class DetailFragment: Fragment() {
+class DetailFragment : Fragment() {
     private var model: DetailModel? = null
     private var binding: FragmentDetailBinding? = null
     private val actionBar: ActionBar?

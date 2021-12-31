@@ -52,7 +52,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
 
                 searchJob = viewModelScope.launch {
                     _searchViewClearFocus.emit(Unit)
-                    _progressBarVisibility.value = View.VISIBLE
+                    _progressBarContainerVisibility.value = View.VISIBLE
 
                     runCatching {
                         repository.search(query)
@@ -71,7 +71,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
                             Toast.makeText(application, text, Toast.LENGTH_SHORT).show()
                         }
                     ).also {
-                        _progressBarVisibility.value = View.INVISIBLE
+                        _progressBarContainerVisibility.value = View.INVISIBLE
                     }
                 }
 
@@ -84,8 +84,8 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
         }
     }
 
-    private val _progressBarVisibility = MutableStateFlow(View.INVISIBLE)
-    val progressBarVisibility = _progressBarVisibility.asStateFlow()
+    private val _progressBarContainerVisibility = MutableStateFlow(View.INVISIBLE)
+    val progressBarContainerVisibility = _progressBarContainerVisibility.asStateFlow()
 
     private val _showDetail = MutableSharedFlow<DetailModel>()
     val showDetail = _showDetail.asSharedFlow()

@@ -18,7 +18,7 @@
             android:id="@+id/progress_container_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.progressBarVisibility}">
+            android:visibility="@{viewModel.progressBarContainerVisibility}">
 
             <android.widget.ProgressBar
                 style="@android:style/Widget.ProgressBar.Large"

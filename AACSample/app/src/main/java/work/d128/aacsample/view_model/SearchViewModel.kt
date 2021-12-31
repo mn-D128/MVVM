@@ -20,7 +20,8 @@ import work.d128.aacsample.model.SearchResultItemModel
 import work.d128.aacsample.repository.Repository
 import java.util.concurrent.CancellationException
 
-class SearchViewModel(application: Application, private val handle: SavedStateHandle): AndroidViewModel(application) {
+class SearchViewModel(application: Application, private val handle: SavedStateHandle) :
+    AndroidViewModel(application) {
     private val repository = Repository()
     private var dataSet: List<SearchResultItemModel>? = null
     private var searchJob: Job? = null
@@ -34,7 +35,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
     }
 
     val searchViewQueryTextListener by lazy {
-        object: SearchView.OnQueryTextListener {
+        object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (searchViewQuery == query && dataSet != null) {
                     return false
@@ -93,7 +94,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
     val searchViewClearFocus = this._searchViewClearFocus.asSharedFlow()
 
     private val selectedItemListener by lazy {
-        object: SearchAdapter.OnSelectedItemListener {
+        object : SearchAdapter.OnSelectedItemListener {
             override fun onSelectedItem(position: Int) {
                 dataSet?.let {
                     val item = it[position]
@@ -108,6 +109,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
     }
 
     companion object {
-        private const val SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY = "SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY"
+        private const val SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY =
+            "SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY"
     }
 }

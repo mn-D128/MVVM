@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="model"
-            type="work.d128.aacsample.model.SearchResultItemModel" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="44dp">
@@ -21,13 +13,20 @@
             android:layout_height="0dp"
             android:gravity="center_vertical"
             android:text="@{model.title}"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            tools:text="タイトル"
-            />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="タイトル" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="work.d128.aacsample.model.SearchResultItemModel" />
+
+    </data>
 
 </layout>

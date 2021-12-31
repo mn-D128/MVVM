@@ -20,26 +20,29 @@ import work.d128.aacsample.R
 import work.d128.aacsample.databinding.FragmentSearchBinding
 import work.d128.aacsample.view_model.SearchViewModel
 
-class SearchFragment: Fragment() {
+class SearchFragment : Fragment() {
     private var binding: FragmentSearchBinding? = null
     private val viewModel by lazy {
-        SavedStateViewModelFactory(requireActivity().application, this).create(SearchViewModel::class.java).also { viewModel ->
-           lifecycleScope.launchWhenResumed {
-               viewModel.searchViewClearFocus.collect {
-                   searchView?.clearFocus()
-               }
-           }
+        SavedStateViewModelFactory(
+            requireActivity().application,
+            this
+        ).create(SearchViewModel::class.java).also { viewModel ->
+            lifecycleScope.launchWhenResumed {
+                viewModel.searchViewClearFocus.collect {
+                    searchView?.clearFocus()
+                }
+            }
 
-           lifecycleScope.launchWhenResumed {
-               viewModel.showDetail.collect {
-                   val bundle = DetailFragment.createArguments(it)
-                   parentFragmentManager.commit {
-                       addToBackStack(null)
-                       replace<DetailFragment>(R.id.fragment_container_view, args = bundle)
-                   }
-               }
-           }
-       }
+            lifecycleScope.launchWhenResumed {
+                viewModel.showDetail.collect {
+                    val bundle = DetailFragment.createArguments(it)
+                    parentFragmentManager.commit {
+                        addToBackStack(null)
+                        replace<DetailFragment>(R.id.fragment_container_view, args = bundle)
+                    }
+                }
+            }
+        }
     }
     private var searchView: SearchView? = null
 
@@ -99,6 +102,8 @@ class SearchFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        (this.requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (this.requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(
+            false
+        )
     }
 }

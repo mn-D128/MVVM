@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -19,11 +20,11 @@ import work.d128.aacsample.model.SearchResultItemModel
 import work.d128.aacsample.repository.Repository
 import java.util.concurrent.CancellationException
 
-class SearchViewModel(application: Application): AndroidViewModel(application) {
+class SearchViewModel(application: Application, private val handle: SavedStateHandle): AndroidViewModel(application) {
     private val repository = Repository()
-    private var dataSet = listOf<SearchResultItemModel>()
+    private var dataSet: List<SearchResultItemModel>? = null
     private var searchJob: Job? = null
-    var searchViewQuery = ""
+    var searchViewQuery = handle.get(SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY) ?: ""
         private set
 
     val adapter by lazy {
@@ -35,7 +36,12 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
     val searchViewQueryTextListener by lazy {
         object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                if (searchViewQuery == query && dataSet != null) {
+                    return false
+                }
+
                 searchViewQuery = query
+                handle.set(SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY, query)
 
                 viewModelScope.launch {
                     if (searchJob?.isCompleted == false && searchJob?.isCancelled == false) {
@@ -51,7 +57,8 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                         repository.search(query)
                     }.fold(
                         onSuccess = { response ->
-                            dataSet = response.query.search.map { SearchResultItemModel(it) }
+                            val dataSet = response.query.search.map { SearchResultItemModel(it) }
+                            this@SearchViewModel.dataSet = dataSet
                             adapter.setDataSet(dataSet)
                         },
                         onFailure = {
@@ -88,13 +95,19 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
     private val selectedItemListener by lazy {
         object: SearchAdapter.OnSelectedItemListener {
             override fun onSelectedItem(position: Int) {
-                val item = dataSet[position]
-                val model = DetailModel(item.pageId, item.title)
+                dataSet?.let {
+                    val item = it[position]
+                    val model = DetailModel(item.pageId, item.title)
 
-                viewModelScope.launch {
-                    _showDetail.emit(model)
+                    viewModelScope.launch {
+                        _showDetail.emit(model)
+                    }
                 }
             }
         }
+    }
+
+    companion object {
+        private const val SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY = "SAVED_STATE_HANDLE_KEY_SEARCH_VIEW_QUERY"
     }
 }

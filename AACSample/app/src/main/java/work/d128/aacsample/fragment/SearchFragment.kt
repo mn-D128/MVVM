@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.flow.collect
@@ -22,8 +22,8 @@ import work.d128.aacsample.view_model.SearchViewModel
 
 class SearchFragment: Fragment() {
     private var binding: FragmentSearchBinding? = null
-    private val viewModel :SearchViewModel by lazy {
-       ViewModelProvider.AndroidViewModelFactory.getInstance(this.requireActivity().application).create(SearchViewModel::class.java).also { viewModel ->
+    private val viewModel by lazy {
+        SavedStateViewModelFactory(requireActivity().application, this).create(SearchViewModel::class.java).also { viewModel ->
            lifecycleScope.launchWhenResumed {
                viewModel.searchViewClearFocus.collect {
                    searchView?.clearFocus()
@@ -86,7 +86,7 @@ class SearchFragment: Fragment() {
         this.searchView = (menu.findItem(R.id.search).actionView as SearchView).apply {
             this.isIconifiedByDefault = false
             this.setOnQueryTextListener(viewModel.searchViewQueryTextListener)
-            this.setQuery(viewModel.searchViewQuery, false)
+            this.setQuery(viewModel.searchViewQuery, true)
         }
     }
 

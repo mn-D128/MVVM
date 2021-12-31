@@ -30,7 +30,7 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
 
     val adapter by lazy {
         SearchAdapter().apply {
-            this.setOnSelectedItemListener(selectedItemListener)
+            setOnSelectedItemListener(selectedItemListener)
         }
     }
 
@@ -85,13 +85,13 @@ class SearchViewModel(application: Application, private val handle: SavedStateHa
     }
 
     private val _progressBarVisibility = MutableStateFlow(View.INVISIBLE)
-    val progressBarVisibility = this._progressBarVisibility.asStateFlow()
+    val progressBarVisibility = _progressBarVisibility.asStateFlow()
 
     private val _showDetail = MutableSharedFlow<DetailModel>()
-    val showDetail = this._showDetail.asSharedFlow()
+    val showDetail = _showDetail.asSharedFlow()
 
     private val _searchViewClearFocus = MutableSharedFlow<Unit>()
-    val searchViewClearFocus = this._searchViewClearFocus.asSharedFlow()
+    val searchViewClearFocus = _searchViewClearFocus.asSharedFlow()
 
     private val selectedItemListener by lazy {
         object : SearchAdapter.OnSelectedItemListener {

@@ -21,7 +21,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.binding.model = this.dataSet[position]
+        viewHolder.binding.model = dataSet[position]
         viewHolder.binding.root.setOnClickListener {
             selectedItemListener?.onSelectedItem(position)
         }
@@ -32,11 +32,11 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
     fun setDataSet(dataSet: List<SearchResultItemModel>) {
         this.dataSet = dataSet
-        this.notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 
     fun setOnSelectedItemListener(listener: OnSelectedItemListener) {
-        this.selectedItemListener = listener
+        selectedItemListener = listener
     }
 
     interface OnSelectedItemListener {

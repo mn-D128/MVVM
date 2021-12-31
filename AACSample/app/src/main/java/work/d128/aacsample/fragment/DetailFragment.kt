@@ -14,13 +14,13 @@ class DetailFragment : Fragment() {
     private var model: DetailModel? = null
     private var binding: FragmentDetailBinding? = null
     private val actionBar: ActionBar?
-        get() = (this.requireActivity() as AppCompatActivity).supportActionBar
+        get() = (requireActivity() as AppCompatActivity).supportActionBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.model = this.arguments?.getParcelable(BUNDLE_KEY_MODEL)
+        model = arguments?.getParcelable(BUNDLE_KEY_MODEL)
     }
 
     override fun onCreateView(
@@ -28,26 +28,26 @@ class DetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        this.binding = FragmentDetailBinding.inflate(inflater, container, false)
-        this.binding?.lifecycleOwner = this
-        return this.binding?.root
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding?.lifecycleOwner = this
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.model?.url?.let {
-            this.binding?.webView?.loadUrl(it)
+        model?.url?.let {
+            binding?.webView?.loadUrl(it)
         }
 
-        actionBar?.title = this.model?.title
+        actionBar?.title = model?.title
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
 
         // https://developer.android.com/topic/libraries/view-binding#fragments
-        this.binding = null
+        binding = null
     }
 
     override fun onResume() {
@@ -61,7 +61,7 @@ class DetailFragment : Fragment() {
 
         fun createArguments(model: DetailModel): Bundle {
             return Bundle().apply {
-                this.putParcelable(BUNDLE_KEY_MODEL, model)
+                putParcelable(BUNDLE_KEY_MODEL, model)
             }
         }
     }

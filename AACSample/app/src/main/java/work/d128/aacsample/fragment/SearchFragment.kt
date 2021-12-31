@@ -49,7 +49,7 @@ class SearchFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -57,20 +57,20 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        this.binding = FragmentSearchBinding.inflate(inflater, container, false)
-        this.binding?.lifecycleOwner = this
-        this.binding?.viewModel = this.viewModel
-        return this.binding?.root
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        binding?.lifecycleOwner = this
+        binding?.viewModel = viewModel
+        return binding?.root
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.binding?.recyclerView?.layoutManager = LinearLayoutManager(view.context)
-        this.binding?.recyclerView?.adapter = this.viewModel.adapter
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(view.context)
+        binding?.recyclerView?.adapter = viewModel.adapter
 
-        this.binding?.progressContainerView?.setOnTouchListener { _, _ -> true }
+        binding?.progressContainerView?.setOnTouchListener { _, _ -> true }
 
     }
 
@@ -78,7 +78,7 @@ class SearchFragment : Fragment() {
         super.onDestroyView()
 
         // https://developer.android.com/topic/libraries/view-binding#fragments
-        this.binding = null
+        binding = null
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -86,23 +86,23 @@ class SearchFragment : Fragment() {
 
         inflater.inflate(R.menu.options_menu, menu)
 
-        this.searchView = (menu.findItem(R.id.search).actionView as SearchView).apply {
-            this.isIconifiedByDefault = false
-            this.setOnQueryTextListener(viewModel.searchViewQueryTextListener)
-            this.setQuery(viewModel.searchViewQuery, true)
+        searchView = (menu.findItem(R.id.search).actionView as SearchView).apply {
+            isIconifiedByDefault = false
+            setOnQueryTextListener(viewModel.searchViewQueryTextListener)
+            setQuery(viewModel.searchViewQuery, true)
         }
     }
 
     override fun onDestroyOptionsMenu() {
         super.onDestroyOptionsMenu()
 
-        this.searchView = null
+        searchView = null
     }
 
     override fun onResume() {
         super.onResume()
 
-        (this.requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(
             false
         )
     }

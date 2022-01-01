@@ -39,11 +39,8 @@ extension DetailViewModel: DetailViewModelOutputs {
     }
 
     var webViewRequest: SignalProducer<URLRequest, Never> {
-        var request: URLRequest?
-        if let url = URL(string: "https://ja.wikipedia.org/?curid=\(self.model.pageId)") {
-            request = URLRequest(url: url)
-        }
-
-        return SignalProducer(value: request).skipNil()
+        SignalProducer(value: self.model.url)
+            .skipNil()
+            .map { URLRequest(url: $0) }
     }
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 final class DetailModel: NSObject {
-    let pageId: PageId
     let title: String
+    let url: URL?
 
     // MARK: - NSObject
 
@@ -17,8 +17,8 @@ final class DetailModel: NSObject {
         pageId: PageId,
         title: String
     ) {
-        self.pageId = pageId
         self.title = title
+        self.url = URL(string: "https://ja.wikipedia.org/?curid=\(pageId)")
 
         super.init()
     }

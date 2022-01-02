@@ -41,9 +41,9 @@ extension DetailViewModel: DetailViewModelOutputs {
     }
 
     var webViewRequest: AnyPublisher<URLRequest, Never> {
-        Just(self.model.pageId)
+        Just(self.model.url)
             .compactMap {
-                guard let url = URL(string: "https://ja.wikipedia.org/?curid=\($0)") else { return nil }
+                guard let url = $0 else { return nil }
                 return URLRequest(url: url)
             }
             .eraseToAnyPublisher()

@@ -40,11 +40,11 @@ extension DetailViewModel: DetailViewModelOutputs {
     }
 
     var webViewRequest: Driver<URLRequest> {
-        var request: URLRequest?
-        if let url = URL(string: "https://ja.wikipedia.org/?curid=\(self.model.pageId)") {
-            request = URLRequest(url: url)
-        }
-
-        return BehaviorRelay(value: request).asDriver().compactMap { $0 }
+        BehaviorRelay(value: self.model.url)
+            .asDriver()
+            .compactMap {
+                guard let url = $0 else { return nil }
+                return URLRequest(url: url)
+            }
     }
 }

@@ -40,7 +40,9 @@ extension DetailViewModel: DetailViewModelOutputs {
 
     var webViewRequest: SignalProducer<URLRequest, Never> {
         SignalProducer(value: self.model.url)
-            .skipNil()
-            .map { URLRequest(url: $0) }
+            .compactMap {
+                guard let url = $0 else { return nil }
+                return URLRequest(url: url)
+            }
     }
 }

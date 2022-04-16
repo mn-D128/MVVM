@@ -11,21 +11,10 @@ import Foundation
 import UIKit
 
 final class SearchViewModel: NSObject {
-    private let model: SearchModel
-    private let search: CombineAction<String, Void, Error>
+    private let model = SearchModel()
 
     // outputs
     private let showDetailSubject = PassthroughSubject<DetailModel, Never>()
-
-    // MARK: - NSObject
-
-    override init() {
-        let model = SearchModel()
-        self.model = model
-        self.search = CombineAction { model.search($0) }
-
-        super.init()
-    }
 }
 
 // MARK: - SearchViewModelType
@@ -52,19 +41,19 @@ extension SearchViewModel: SearchViewModelOutputs {
     }
 
     var searchBarBecomeFirstResponder: AnyPublisher<Void, Never> {
-        self.search.errors.map { _ in }.eraseToAnyPublisher()
+        self.model.search.errors.map { _ in }.eraseToAnyPublisher()
     }
 
     var showProgress: AnyPublisher<Void, Never> {
-        self.search.$isExecuting.compactMap { $0 ? () : nil }.eraseToAnyPublisher()
+        self.model.search.$isExecuting.compactMap { $0 ? () : nil }.eraseToAnyPublisher()
     }
 
     var dismissProgress: AnyPublisher<Void, Never> {
-        self.search.values
+        self.model.search.values
     }
 
     var showError: AnyPublisher<String, Never> {
-        self.search.errors.map { $0.localizedDescription }.eraseToAnyPublisher()
+        self.model.search.errors.map { $0.localizedDescription }.eraseToAnyPublisher()
     }
 
     var showDetail: AnyPublisher<DetailModel, Never> {
@@ -79,7 +68,7 @@ extension SearchViewModel: UISearchBarDelegate {
         searchBar.resignFirstResponder()
 
         let text = searchBar.text ?? ""
-        self.search.apply(text).sinkUntilCompleted()
+        self.model.search.apply(text).sinkUntilCompleted()
     }
 }
 

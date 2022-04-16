@@ -10,7 +10,6 @@ import ReactiveSwift
 
 final class SearchViewModel: NSObject {
     private let model: SearchModel
-    private let search: Action<String, Void, Error>
 
     // outputs
     private let showDetailPipe = Signal<DetailModel, Never>.pipe()
@@ -20,7 +19,6 @@ final class SearchViewModel: NSObject {
     override init() {
         let model = SearchModel()
         self.model = model
-        self.search = Action { [weak model] in model?.search($0) ?? .never }
 
         super.init()
     }
@@ -48,19 +46,19 @@ extension SearchViewModel: SearchViewModelOutputs {
     }
 
     var searchBarBecomeFirstResponder: Signal<Void, Never> {
-        self.search.errors.map { _ in }
+        self.model.search.errors.map { _ in }
     }
 
     var showProgress: Signal<Void, Never> {
-        self.search.isExecuting.signal.compactMap { $0 ? () : nil }
+        self.model.search.isExecuting.signal.compactMap { $0 ? () : nil }
     }
 
     var dismissProgress: Signal<Void, Never> {
-        self.search.values
+        self.model.search.values
     }
 
     var showError: Signal<String, Never> {
-        self.search.errors.map { $0.localizedDescription }
+        self.model.search.errors.map { $0.localizedDescription }
     }
 
     var showDetail: Signal<DetailModel, Never> {
@@ -75,7 +73,7 @@ extension SearchViewModel: UISearchBarDelegate {
         searchBar.resignFirstResponder()
 
         let text = searchBar.text ?? ""
-        self.search.apply(text).start()
+        self.model.search.apply(text).start()
     }
 }
 

@@ -13,7 +13,6 @@ import UIKit
 
 final class SearchViewModel: NSObject {
     private let model: SearchModel
-    private let search: Action<String, Void>
 
     // outputs
     private let showDetailRelay = PublishRelay<DetailModel>()
@@ -21,9 +20,7 @@ final class SearchViewModel: NSObject {
     // MARK: - NSObject
 
     override init() {
-        let model = SearchModel()
-        self.model = model
-        self.search = Action<String, Void> { [weak model] in model?.search($0).asObservable() ?? .empty() }
+        self.model = SearchModel()
 
         super.init()
     }
@@ -50,19 +47,19 @@ extension SearchViewModel: SearchViewModelOutputs {
     }
 
     var searchBarBecomeFirstResponder: Driver<Void> {
-        self.search.errors.map { _ in }.asDriver(onErrorDriveWith: .empty())
+        self.model.search.errors.map { _ in }.asDriver(onErrorDriveWith: .empty())
     }
 
     var showProgress: Driver<Void> {
-        self.search.executing.compactMap { $0 ? () : nil }.asDriver(onErrorDriveWith: .empty())
+        self.model.search.executing.compactMap { $0 ? () : nil }.asDriver(onErrorDriveWith: .empty())
     }
 
     var dismissProgress: Driver<Void> {
-        self.search.elements.asDriver(onErrorDriveWith: .empty())
+        self.model.search.elements.asDriver(onErrorDriveWith: .empty())
     }
 
     var showError: Driver<String> {
-        self.search.errors.map { $0.localizedDescription }.asDriver(onErrorDriveWith: .empty())
+        self.model.search.errors.map { $0.localizedDescription }.asDriver(onErrorDriveWith: .empty())
     }
 
     var showDetail: Driver<DetailModel> {
@@ -77,7 +74,7 @@ extension SearchViewModel: UISearchBarDelegate {
         searchBar.resignFirstResponder()
 
         let text = searchBar.text ?? ""
-        self.search.execute(text)
+        self.model.search.execute(text)
     }
 }
 

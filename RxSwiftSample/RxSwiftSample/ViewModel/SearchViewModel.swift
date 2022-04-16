@@ -12,18 +12,10 @@ import RxSwift
 import UIKit
 
 final class SearchViewModel: NSObject {
-    private let model: SearchModel
+    private let model = SearchModel()
 
     // outputs
     private let showDetailRelay = PublishRelay<DetailModel>()
-
-    // MARK: - NSObject
-
-    override init() {
-        self.model = SearchModel()
-
-        super.init()
-    }
 }
 
 // MARK: - SearchViewModelType

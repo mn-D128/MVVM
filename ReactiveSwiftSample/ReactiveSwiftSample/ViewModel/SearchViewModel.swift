@@ -9,19 +9,10 @@ import Foundation
 import ReactiveSwift
 
 final class SearchViewModel: NSObject {
-    private let model: SearchModel
+    private let model = SearchModel()
 
     // outputs
     private let showDetailPipe = Signal<DetailModel, Never>.pipe()
-
-    // MARK: - NSObject
-
-    override init() {
-        let model = SearchModel()
-        self.model = model
-
-        super.init()
-    }
 }
 
 // MARK: - SearchViewModelType
